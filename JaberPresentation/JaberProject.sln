@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaberPresentation", "JaberPresentation\JaberPresentation.csproj", "{B3204609-1BDD-4D07-B396-60C2F9A8F396}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchestrator", "JaberPresentation\Orchestrator.csproj", "{B3204609-1BDD-4D07-B396-60C2F9A8F396}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaberTests", "JaberTests\JaberTests.csproj", "{99618CE9-37AB-4176-A42E-93AA763C87E9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaberCore", "..\JaberCore\JaberCore.csproj", "{6E112AB3-C577-4CA8-8077-9BB7C8B2B903}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodes", "..\JaberCore\Nodes.csproj", "{6E112AB3-C577-4CA8-8077-9BB7C8B2B903}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{B3204609-1BDD-4D07-B396-60C2F9A8F396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3204609-1BDD-4D07-B396-60C2F9A8F396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3204609-1BDD-4D07-B396-60C2F9A8F396}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99618CE9-37AB-4176-A42E-93AA763C87E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99618CE9-37AB-4176-A42E-93AA763C87E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99618CE9-37AB-4176-A42E-93AA763C87E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99618CE9-37AB-4176-A42E-93AA763C87E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E112AB3-C577-4CA8-8077-9BB7C8B2B903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6E112AB3-C577-4CA8-8077-9BB7C8B2B903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E112AB3-C577-4CA8-8077-9BB7C8B2B903}.Release|Any CPU.ActiveCfg = Release|Any CPU
