@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchestrator", "Orchestrator.csproj", "{956CF5F0-4F04-4788-B3D6-5E93DA9FEAE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodes", "..\Nodes\Nodes.csproj", "{D28A6ACD-506D-4AB9-B550-8D852533B509}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{956CF5F0-4F04-4788-B3D6-5E93DA9FEAE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{956CF5F0-4F04-4788-B3D6-5E93DA9FEAE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{956CF5F0-4F04-4788-B3D6-5E93DA9FEAE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D28A6ACD-506D-4AB9-B550-8D852533B509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28A6ACD-506D-4AB9-B550-8D852533B509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28A6ACD-506D-4AB9-B550-8D852533B509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28A6ACD-506D-4AB9-B550-8D852533B509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
