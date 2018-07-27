@@ -64,7 +64,7 @@
     </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionNode.cs" />
-    <Compile Include="Orchestrator.cs" />
+    <Compile Include="Maestro.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 
 namespace Orchestrator
 {
@@ -20,5 +15,6 @@ namespace Orchestrator
         public Connection(AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType) : base(addressFamily, socketType, protocolType)
         {
         }
-    }
+
+        }
 }
