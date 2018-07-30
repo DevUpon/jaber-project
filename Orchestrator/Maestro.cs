@@ -30,18 +30,5 @@ namespace Orchestrator
         {
             connectionNode.StartClient();
         }
-
-        /*Solve it !!
-         
-         private static void Main(String[] args)
-        {
-            var dna = "AABBCDCBDA";
-            var socketInformation = new SocketInformation();
-            var connectionNode = new ConnectionNode(socketInformation);
-            var orchestrator = new Maestro(dna, connectionNode);
-
-            orchestrator.connect();
-        }
-         */
     }
 }
