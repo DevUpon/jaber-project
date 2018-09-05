@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,12 +22,6 @@ namespace Orchestrator
     {
         public MainWindow()
         {
-            var nodePort = 8081;
-            var nodeAddress = "127.0.0.1";
-            var dna = "AABBCDCBDA";
-            var connectionNode = new ConnectionNode(nodeAddress, nodePort);
-            var orchestrator = new Maestro(dna, connectionNode);
-            orchestrator.connect();
             InitializeComponent();
         }
     }

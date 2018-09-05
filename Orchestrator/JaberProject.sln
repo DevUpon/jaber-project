@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchestrator", "Orchestrato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodes", "..\Nodes\Nodes.csproj", "{D28A6ACD-506D-4AB9-B550-8D852533B509}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{BCBA05A3-8EB7-4A24-A5A1-ED1F7F423EE0}"
+	ProjectSection(SolutionItems) = preProject
+		IConnexionSocket.cs = IConnexionSocket.cs
+		Noeud.cs = Noeud.cs
+		BufferObjet.cs = BufferObjet.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
