@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Collections;
 public interface IConnexionSocket
 {
 
@@ -9,7 +10,7 @@ public interface IConnexionSocket
     Boolean ouvrirConnexion();
     Boolean fermerConnexion();
     Boolean verifierConnexion();
-    Socket getSocket();
-    String recevoir();
+    ArrayList getConnexions();
+    String recevoir(Socket handler);
     Boolean envoyer(String data);
 }

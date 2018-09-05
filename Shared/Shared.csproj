@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="BufferObjet.cs" />
     <Compile Include="IConnexionSocket.cs" />
+    <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

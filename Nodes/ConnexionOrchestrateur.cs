@@ -19,9 +19,9 @@ namespace Nodes
             socketOrchestrateur = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        public Socket getSocket()
+        public ArrayList getConnexions()
         {
-            return socketOrchestrateur;
+            return listeConnexions;
         }
 
         public String getAdresse()
@@ -55,13 +55,11 @@ namespace Nodes
             IPAddress ipServer;
             if (IPAddress.TryParse("127.0.0.1", out ipServer))
             {
-                socketOrchestrateur.Bind(new IPEndPoint(ipServer.Address, 50000));
-                socketOrchestrateur.Listen(nbrNoeuds);
-                while (true)
-                {
-                    Socket handler = socketOrchestrateur.Accept();
-                    listeConnexions.Add(handler);
-                }
+                socketOrchestrateur.Bind(new IPEndPoint(ipServer.MapToIPv4(), 50000));
+                socketOrchestrateur.Listen(1);
+                Socket handler = socketOrchestrateur.Accept();
+                listeConnexions.Add(handler);
+                Console.WriteLine("Node {0} connected", listeConnexions.Count);
                 return true;
             }
             return false;
@@ -82,6 +80,7 @@ namespace Nodes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }
@@ -94,7 +93,7 @@ namespace Nodes
         public Boolean envoyer(String donnees)
         {
             byte[] byteData = Encoding.ASCII.GetBytes(donnees);
-            Socket client = (Socket) listeConnexions[0];
+            Socket client = (Socket)listeConnexions[0];
             client.Send(byteData);
             return true;
         }
@@ -105,17 +104,18 @@ namespace Nodes
             Console.WriteLine("Sent {0} bytes to server.", bytesSent);
         }
 
-        public String recevoir()
+        public String recevoir(Socket handler)
         {
+            Console.WriteLine("travail");
 
             BufferObjet etatConnexion = new BufferObjet();
             etatConnexion.socketConnexion = socketOrchestrateur;
             String data = null;
             while (true)
             {
-                int bytesRec = socketOrchestrateur.Receive(etatConnexion.buffer);
+                int bytesRec = handler.Receive(etatConnexion.buffer);
                 data = (String)Encoding.ASCII.GetString(etatConnexion.buffer, 0, bytesRec);
-                if (data.IndexOf("<EOF>") > -1)
+                if (data.Equals(String.Empty))
                 {
                     break;
                 }
@@ -124,6 +124,7 @@ namespace Nodes
                     etatConnexion.chaineBuffer += data;
                 }
             }
+            Console.WriteLine(etatConnexion.chaineBuffer);
             return etatConnexion.chaineBuffer;
         }
     }

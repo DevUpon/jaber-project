@@ -5,19 +5,10 @@ namespace Nodes
     {
         private TaskManager manager;
         private IConnexionSocket connexion;
-        private Boolean isOrch;
+
         public Noeud(int type)
         {
-            if (type == 0)
-            {
-                connexion = new ConnexionNoeud();
-                isOrch = false;
-            }
-            else
-            {
-                connexion = new ConnexionOrchestrateur(1);
-                isOrch = true;
-            }
+            connexion = new ConnexionOrchestrateur(1);
             this.manager = new TaskManager(connexion);
         }
 
@@ -34,6 +25,11 @@ namespace Nodes
         public void waitCompletedConnexion()
         {
             manager.wait();
+        }
+
+        public void recevoir()
+        {
+            manager.runTaskRecevoir();
         }
     }
 }
