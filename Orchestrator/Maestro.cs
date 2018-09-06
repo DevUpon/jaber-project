@@ -37,14 +37,28 @@ namespace Orchestrator
             manager.TaskRecevoir();
         }
 
-        public void mapNode(List<Node> nodes)
+        public void MapNode(List<Node> nodes)
         {
+            
+        }
+
+        public List<List<String>> CreateDnaFragChunk(List<Node> nodes)
+        {
+            List<List<String>> dnaFragmentsChunkedList = new List<List<String>>();
             if (dnaFragments.Count != 0)
             {
-                int numberOfDnaLinePerNode = dnaFragments.Count/nodes.Count;
-                //TODO fix mapping by using connection socket and splitting array into N nodes
+                int numberOfDnaLinePerNode = dnaFragments.Count / nodes.Count;
+
+                for (int index = 0; index < nodes.Count; index++)
+                {
+                    dnaFragmentsChunkedList.Add(dnaFragments.GetRange(index * numberOfDnaLinePerNode, numberOfDnaLinePerNode));
+                }
+            } else
+            {
+                throw new Exception("Unsupported operation exception");
             }
-            }
+            
+            return dnaFragmentsChunkedList;
         }
     }
-}
+    }
