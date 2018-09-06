@@ -3,33 +3,31 @@ namespace Nodes
 {
     public class Noeud
     {
-        private TaskManager manager;
-        private IConnexionSocket connexion;
+        private IConnexionNoeud connexion;
 
         public Noeud(int type)
         {
-            connexion = new ConnexionOrchestrateur(1);
-            this.manager = new TaskManager(connexion);
+            connexion = new ConnexionNoeud();
         }
 
-        public void connecter()
+        public void Connecter()
         {
-            this.manager.runConnecter();
+            connexion.OuvrirConnexion();
         }
 
-        public void envoyer(String data)
+        public void Envoyer(String data)
         {
-            connexion.envoyer(data);
+            connexion.Envoyer(data);
         }
 
-        public void waitCompletedConnexion()
+        public void WaitCompletedConnexion()
         {
-            manager.wait();
+            //TODO
         }
 
-        public void recevoir()
+        public void Recevoir()
         {
-            manager.runTaskRecevoir();
+            connexion.Recevoir();
         }
     }
 }

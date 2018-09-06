@@ -3,11 +3,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Collections;
 using System.Text;
+using Shared;
 
-
-namespace Nodes
+namespace Orchestrator
 {
-    public class ConnexionOrchestrateur : IConnexionSocket
+    public class ConnexionOrchestrateur : IConnexionOrchestrateur
     {
         private Socket socketOrchestrateur;
         private int nbrNoeuds;
@@ -19,12 +19,12 @@ namespace Nodes
             socketOrchestrateur = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        public ArrayList getConnexions()
+        public ArrayList GetConnexions()
         {
             return listeConnexions;
         }
 
-        public String getAdresse()
+        public String GetAdresse()
         {
             IPEndPoint ipPoint = socketOrchestrateur.LocalEndPoint as IPEndPoint;
             if (ipPoint != null)
@@ -37,7 +37,7 @@ namespace Nodes
             }
         }
 
-        public String getPort()
+        public String GetPort()
         {
             IPEndPoint ipPoint = socketOrchestrateur.LocalEndPoint as IPEndPoint;
             if (ipPoint != null)
@@ -50,7 +50,7 @@ namespace Nodes
             }
         }
 
-        public Boolean ouvrirConnexion()
+        public Boolean OuvrirConnexion()
         {
             IPAddress ipServer;
             if (IPAddress.TryParse("127.0.0.1", out ipServer))
@@ -65,12 +65,12 @@ namespace Nodes
             return false;
         }
 
-        public void accepterConnexion(IAsyncResult resultat)
+        public void AccepterConnexion(IAsyncResult resultat)
         {
             listeConnexions.Add(socketOrchestrateur.EndAccept(resultat));
         }
 
-        public Boolean fermerConnexion()
+        public Boolean FermerConnexion()
         {
             try
             {
@@ -80,30 +80,31 @@ namespace Nodes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }
 
-        public Boolean verifierConnexion()
+        public Boolean VerifierConnexion()
         {
             return true;
         }
 
-        public Boolean envoyer(String donnees)
+        public Boolean Envoyer(String donnees)
         {
             byte[] byteData = Encoding.ASCII.GetBytes(donnees);
-            Socket client = (Socket) listeConnexions[0];
+            Socket client = (Socket)listeConnexions[0];
             client.Send(byteData);
             return true;
         }
 
-        public void envoiCallBack(IAsyncResult resultat)
+        public void EnvoiCallBack(IAsyncResult resultat)
         {
             int bytesSent = socketOrchestrateur.EndSend(resultat);
             Console.WriteLine("Sent {0} bytes to server.", bytesSent);
         }
 
-        public String recevoir(Socket handler)
+        public String Recevoir(Socket handler)
         {
             Console.WriteLine("travail");
 
@@ -125,6 +126,16 @@ namespace Nodes
             }
             Console.WriteLine(etatConnexion.chaineBuffer);
             return etatConnexion.chaineBuffer;
+        }
+
+        public Socket GetSocket(Socket handler)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Recevoir()
+        {
+            throw new NotImplementedException();
         }
     }
 }

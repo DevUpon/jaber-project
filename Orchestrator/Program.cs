@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nodes
+namespace Orchestrator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Noeud orch = new Noeud(1);
-            orch.connecter();
-            orch.waitCompletedConnexion();
-            orch.envoyer("Hello!");
-            orch.recevoir();
+            Orchestrateur orch = new Orchestrateur(1);
+            orch.Connecter();
+            orch.WaitCompletedConnexion();
+            orch.Envoyer("Hello!");
+            orch.Recevoir();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Nodes
+namespace Shared
 {
     public class BufferObjet
     {

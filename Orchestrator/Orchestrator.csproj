@@ -50,21 +50,21 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnexionOrchestrateur.cs" />
+    <Compile Include="IConnexionOrchestrateur.cs" />
+    <Compile Include="Orchestrateur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="TaskManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nodes\Nodes.csproj">
-      <Project>{d28a6acd-506d-4ab9-b550-8d852533b509}</Project>
-      <Name>Nodes</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
-      <Project>{65fc63dc-cdfb-40b7-8269-c6fc3019f3ef}</Project>
+      <Project>{65FC63DC-CDFB-40B7-8269-C6FC3019F3EF}</Project>
       <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
