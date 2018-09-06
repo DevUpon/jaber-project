@@ -63,6 +63,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nodes\Nodes.csproj">
+      <Project>{D28A6ACD-506D-4AB9-B550-8D852533B509}</Project>
+      <Name>Nodes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{65FC63DC-CDFB-40B7-8269-C6FC3019F3EF}</Project>
       <Name>Shared</Name>
