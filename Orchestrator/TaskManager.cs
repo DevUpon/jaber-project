@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Net.Sockets;
-using System.Collections;
+using System.Threading.Tasks;
+
 
 namespace Orchestrator
 {
     public class TaskManager
     {
+        private Task<String> tache;
         private Task<Boolean> tacheConnexion;
         private IConnexionOrchestrateur connexion;
 
@@ -24,6 +25,14 @@ namespace Orchestrator
         public Boolean IsConnected()
         {
             return tacheConnexion.IsCompleted;
+        }
+
+        internal void TaskRecevoir()
+        {
+            foreach (Socket socketConnexion in connexion.GetConnexions())
+            {
+                tache = Task.Run(() => connexion.Recevoir(socketConnexion));
+            }
         }
 
         public void Wait()

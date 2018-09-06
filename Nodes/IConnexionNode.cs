@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Collections;
-public interface IConnexionNoeud
+public interface IConnexionNode
 {
 
     String GetAdresse();

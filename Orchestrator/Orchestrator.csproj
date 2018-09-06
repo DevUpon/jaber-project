@@ -50,9 +50,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnexionOrchestrateur.cs" />
-    <Compile Include="IConnexionOrchestrateur.cs" />
-    <Compile Include="Orchestrateur.cs" />
+    <Compile Include="ConnexionOrchestrator.cs" />
+    <Compile Include="IConnexionOrchestrator.cs" />
+    <Compile Include="Maestro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

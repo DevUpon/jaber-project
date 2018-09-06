@@ -1,12 +1,12 @@
 ﻿using System;
 namespace Orchestrator
 {
-    public class Orchestrateur
+    public class Maestro
     {
         private TaskManager manager;
         private IConnexionOrchestrateur connexion;
 
-        public Orchestrateur(int type)
+        public Maestro(int type)
         {
             connexion = new ConnexionOrchestrateur(1);
             this.manager = new TaskManager(connexion);
@@ -29,7 +29,7 @@ namespace Orchestrator
 
         public void Recevoir()
         {
-            connexion.Recevoir();
+            manager.TaskRecevoir();
         }
     }
 }

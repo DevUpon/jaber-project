@@ -128,14 +128,9 @@ namespace Orchestrator
             return etatConnexion.chaineBuffer;
         }
 
-        public Socket GetSocket(Socket handler)
+        public Socket GetSocket()
         {
-            throw new NotImplementedException();
-        }
-
-        public string Recevoir()
-        {
-            throw new NotImplementedException();
+            return socketOrchestrateur;
         }
     }
 }

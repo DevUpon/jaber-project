@@ -1,13 +1,13 @@
 ﻿using System;
 namespace Nodes
 {
-    public class Noeud
+    public class Node
     {
-        private IConnexionNoeud connexion;
+        private IConnexionNode connexion;
 
-        public Noeud(int type)
+        public Node()
         {
-            connexion = new ConnexionNoeud();
+            connexion = new ConnexionNode();
         }
 
         public void Connecter()
@@ -18,11 +18,6 @@ namespace Nodes
         public void Envoyer(String data)
         {
             connexion.Envoyer(data);
-        }
-
-        public void WaitCompletedConnexion()
-        {
-            //TODO
         }
 
         public void Recevoir()

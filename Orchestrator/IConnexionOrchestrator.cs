@@ -10,7 +10,8 @@ public interface IConnexionOrchestrateur
     Boolean OuvrirConnexion();
     Boolean FermerConnexion();
     Boolean VerifierConnexion();
-    Socket GetSocket(Socket handler);
-    String Recevoir();
+    Socket GetSocket();
+    String Recevoir(Socket handler);
     Boolean Envoyer(String data);
+    ArrayList GetConnexions();
 }

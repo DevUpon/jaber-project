@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnexionNoeud.cs" />
-    <Compile Include="IConnexionNoeud.cs" />
-    <Compile Include="Noeud.cs" />
+    <Compile Include="ConnexionNode.cs" />
+    <Compile Include="IConnexionNode.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

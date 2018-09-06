@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Nodes
 {
-    public class ConnexionNoeud : IConnexionNoeud
+    public class ConnexionNode : IConnexionNode
     {
 
         private Socket socketNoeud;
@@ -15,7 +15,7 @@ namespace Nodes
         private byte[] buffer = new byte[tailleBuffer];
         private StringBuilder stringBuffer = new StringBuilder();
 
-        public ConnexionNoeud()
+        public ConnexionNode()
         {
             socketNoeud = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
@@ -88,7 +88,7 @@ namespace Nodes
             return true;
         }
 
-        public String Recevoir(Socket handler)
+        public String Recevoir()
         {
 
             BufferObjet etatConnexion = new BufferObjet();
@@ -123,9 +123,5 @@ namespace Nodes
             throw new NotImplementedException();
         }
 
-        public string Recevoir()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

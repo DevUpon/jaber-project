@@ -10,7 +10,7 @@ namespace Orchestrator
     {
         static void Main(string[] args)
         {
-            Orchestrateur orch = new Orchestrateur(1);
+            Maestro orch = new Maestro(1);
             orch.Connecter();
             orch.WaitCompletedConnexion();
             orch.Envoyer("Hello!");
