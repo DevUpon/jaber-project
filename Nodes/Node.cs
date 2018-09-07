@@ -1,9 +1,14 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+=======
+using Shared;
+using System.Collections.Generic;
+>>>>>>> 8450a98b6824e525db4a95bfd156b8b6d1e5ff33
 
 namespace Nodes
 {
@@ -29,10 +34,10 @@ namespace Nodes
             Dictionary<string, int> dResult3 = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
             Dictionary<string, int> dResult4 = parser.Parse("befqfnzervqufdiqnsrodecfhqusyedvbcfnzer");
             Reducer reducer = new Reducer();
-            reducer.addDictToReduce(dResult);
-            reducer.addDictToReduce(dResult2);
-            reducer.addDictToReduce(dResult3);
-            reducer.addDictToReduce(dResult4);
+            reducer.AddDictToReduce(dResult);
+            reducer.AddDictToReduce(dResult2);
+            reducer.AddDictToReduce(dResult3);
+            reducer.AddDictToReduce(dResult4);
             Dictionary<string, int> finalDict = reducer.Reduce();
             Console.WriteLine("reduce");
             foreach (KeyValuePair<string, int> kvp in finalDict)
