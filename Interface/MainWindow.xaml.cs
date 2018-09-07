@@ -36,7 +36,7 @@ namespace Interface
 
         private void TimerReadFile(object sender, EventArgs e)
         {
-            string path = @"C:\Users\Eliott\source\repos\jaber-project\ResultFile.txt";
+            string path = @"C:\temp\ResultFile.txt";
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -79,8 +79,8 @@ namespace Interface
 
         private void sendBT_Click(object sender, RoutedEventArgs e)
         {
-            string path = @"C:\Users\Eliott\source\repos\jaber-project\DNAFile.txt";
-            /*
+            string path = @"C:\temp\DNAFile.txt";
+            /* // TODO Send to orchestrator
             using (StreamWriter outputFile = new StreamWriter(path))
             {
                 foreach (string line in lines)
