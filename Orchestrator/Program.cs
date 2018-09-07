@@ -11,6 +11,7 @@ namespace Orchestrator
         static void Main(string[] args)
         {
             Maestro orch = new Maestro(1);
+            orch.Split();
             orch.Connecter();
             orch.WaitCompletedConnexion();
             orch.Envoyer("Hello!");
