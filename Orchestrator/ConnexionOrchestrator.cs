@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Collections;
 using System.Text;
 using Shared;
+using System.Collections.Generic;
 
 namespace Orchestrator
 {
@@ -50,16 +51,19 @@ namespace Orchestrator
             }
         }
 
-        public Boolean OuvrirConnexion()
+        public Boolean OuvrirConnexion(int countNode)
         {
             IPAddress ipServer;
             if (IPAddress.TryParse("127.0.0.1", out ipServer))
             {
                 socketOrchestrateur.Bind(new IPEndPoint(ipServer.MapToIPv4(), 50000));
-                socketOrchestrateur.Listen(1);
-                Socket handler = socketOrchestrateur.Accept();
-                listeConnexions.Add(handler);
-                Console.WriteLine("Node {0} connected", listeConnexions.Count);
+                socketOrchestrateur.Listen(countNode);
+                while (listeConnexions.Count < countNode)
+                {
+                    Socket handler = socketOrchestrateur.Accept();
+                    listeConnexions.Add(handler);
+                    Console.WriteLine("Node {0} connected", listeConnexions.Count);
+                }
                 return true;
             }
             return false;
@@ -90,11 +94,15 @@ namespace Orchestrator
             return true;
         }
 
-        public Boolean Envoyer(String donnees)
+        public Boolean Envoyer(List<List<String>> data)
         {
-            byte[] byteData = Encoding.ASCII.GetBytes(donnees);
-            Socket client = (Socket)listeConnexions[0];
-            client.Send(byteData);
+            int index = 0;
+            foreach (Socket connexion in listeConnexions)
+            {
+                var dataNode = String.Join("", data[index].ToArray());
+                byte[] byteData = Encoding.ASCII.GetBytes(dataNode);
+                connexion.Send(byteData);
+            }
             return true;
         }
 

@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
-=======
 ﻿using Nodes;
-using System;
-using System.Collections.Generic;
-using System.Text;
->>>>>>> 644dd057bacdd5e6f6f081b87f11a5858912aef7
 
 namespace Orchestrator
 {
@@ -23,12 +17,12 @@ namespace Orchestrator
             this.manager = new TaskManager(connexion);
         }
 
-        public void Connecter()
+        public void Connecter(int countNode)
         {
-            this.manager.RunConnecter();
+            this.manager.RunConnecter(countNode);
         }
 
-        public void Envoyer(String data)
+        public void Envoyer(List<List<String>> data)
         {
             connexion.Envoyer(data);
         }
@@ -43,13 +37,12 @@ namespace Orchestrator
             manager.TaskRecevoir();
         }
 
-<<<<<<< HEAD
         //Prends un fichier local qui se fait spliter
-        public void Split()
+        public List<String> Split(String pathFile)
         {
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Faurever\Desktop\genomeTest.txt");
+            string[] lines = System.IO.File.ReadAllLines(pathFile);
             List<string> mylist = new List<string>();
             String allstring = "";
 
@@ -84,8 +77,6 @@ namespace Orchestrator
 
 
                 }
-
-
                 //testValue++;
             }
 
@@ -98,31 +89,30 @@ namespace Orchestrator
             Console.WriteLine("Résult final " + mylist[11]);
             Console.WriteLine("Résult final " + mylist[12]);
             Console.WriteLine("Press any key to exit.");
-            System.Console.ReadKey();
+            // System.Console.ReadKey();
             string path = @"C:\Users\Faurever\Desktop\result.txt";
             //string path2 = @"C:\Users\Faurever\Desktop\result2.txt";
             System.IO.File.WriteAllLines(path, mylist);
             //String beu = mylist.ToString();
             //System.IO.File.WriteAllText(path2, allstring);
-
+            return mylist;
         }
-    }
-}
-=======
+
         public void MapNode(List<Node> nodes)
         {
             
         }
 
-        private List<List<String>> CreateDnaFragChunk(List<Node> nodes)
+        public List<List<String>> CreateDnaFragChunk(String pathFile, int countNodes)
         {
+            List<String> dnaFragments = Split(pathFile);
             List<List<String>> dnaFragmentsChunkedList = new List<List<String>>();
 
             if (dnaFragments.Count != 0)
             {
-                int numberOfDnaLinePerNode = dnaFragments.Count / nodes.Count;
+                int numberOfDnaLinePerNode = dnaFragments.Count / countNodes;
 
-                for (int index = 0; index < nodes.Count; index++)
+                for (int index = 0; index < countNodes; index++)
                 {
                     dnaFragmentsChunkedList.Add(dnaFragments.GetRange(index * numberOfDnaLinePerNode, numberOfDnaLinePerNode));
                 }
@@ -145,4 +135,3 @@ namespace Orchestrator
         }
 
     }
->>>>>>> 644dd057bacdd5e6f6f081b87f11a5858912aef7

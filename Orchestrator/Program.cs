@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nodes;
 
 namespace Orchestrator
 {
@@ -11,10 +12,10 @@ namespace Orchestrator
         static void Main(string[] args)
         {
             Maestro orch = new Maestro(1);
-            orch.Split();
-            orch.Connecter();
+            List<List<String>> dnaList= orch.CreateDnaFragChunk(@"C:\Users\Faurever\Desktop\genomeTest.txt", 2);
+            orch.Connecter(2);
             orch.WaitCompletedConnexion();
-            orch.Envoyer("Hello!");
+            orch.Envoyer(dnaList);
             orch.Recevoir();
             //orch.Split();
         }
