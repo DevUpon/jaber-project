@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Nodes
+namespace Shared
 {
-    class Parser
+    public class Parser
     {
         public Parser()
         {
