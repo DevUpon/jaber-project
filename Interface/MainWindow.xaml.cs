@@ -29,15 +29,14 @@ namespace Interface
 
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(TimerReadFile);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
             dispatcherTimer.Start();
             resultBolck.Text = "";
         }
 
         private void TimerReadFile(object sender, EventArgs e)
         {
-            //string path = @"c:\temp\MyTest.txt";
-            string path = @"C:\Users\Eliott\source\repos\jaber-project\TestFile.txt";
+            string path = @"C:\Users\Eliott\source\repos\jaber-project\ResultFile.txt";
             try
             {
                 using (StreamReader sr = new StreamReader(path))
