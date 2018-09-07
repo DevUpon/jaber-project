@@ -11,10 +11,11 @@ namespace Nodes
     {
         private List<String> dnaFragment;
         private IConnexionNode connexion;
+
         public Node()
         {
             //BOOOUUUCHOOOONNNN
-            //connexion = new ConnexionNode();
+            connexion = new ConnexionNode();
             Parser parser = new Parser();
             Dictionary<string, int> dResult = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
             Console.WriteLine("dict1");
@@ -52,9 +53,9 @@ namespace Nodes
             connexion.Envoyer(data);
         }
 
-        public void Recevoir()
+        public String Recevoir()
         {
-            connexion.Recevoir();
+            return connexion.Recevoir();
         }
 
         public void setDnaFragment(List<String> dnaFragment)

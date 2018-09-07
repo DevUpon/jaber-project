@@ -8,7 +8,7 @@ namespace Nodes
         {
             Node n1 = new Node();
             n1.Connecter();
-            n1.Recevoir();
+            String data = n1.Recevoir();
         }
     }
 }

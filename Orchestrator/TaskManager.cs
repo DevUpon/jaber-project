@@ -16,9 +16,9 @@ namespace Orchestrator
             this.connexion = connexion;
         }
 
-        public void RunConnecter()
+        public void RunConnecter(int countNode)
         {
-            tacheConnexion = Task.Run(new Func<Boolean>(connexion.OuvrirConnexion));
+            tacheConnexion = Task.Run(() => connexion.OuvrirConnexion(countNode));
             Console.WriteLine("Statut du task : {0}", tacheConnexion.Status);
         }
 

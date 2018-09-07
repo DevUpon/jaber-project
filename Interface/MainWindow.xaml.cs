@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Interface
 {
@@ -21,24 +22,32 @@ namespace Interface
     /// </summary>
     public partial class MainWindow : Window
     {
+        string filename = "";
         public MainWindow()
         {
             InitializeComponent();
+
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(TimerReadFile);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
+            dispatcherTimer.Start();
+            resultBolck.Text = "";
         }
 
-        private async void ReadFileButton_Click(object sender, RoutedEventArgs e)
+        private void TimerReadFile(object sender, EventArgs e)
         {
+            string path = @"C:\Users\Eliott\source\repos\jaber-project\ResultFile.txt";
             try
             {
-                using (StreamReader sr = new StreamReader("TestFile.txt"))
+                using (StreamReader sr = new StreamReader(path))
                 {
-                    String line = await sr.ReadToEndAsync();
+                    String line = sr.ReadToEnd();
                     resultBolck.Text = line;
                 }
             }
             catch (Exception ex)
             {
-                resultBolck.Text = "Could not read the file";
+                resultBolck.Text = "En attente du resultat";
             }
         }
 
@@ -63,14 +72,22 @@ namespace Interface
             if (result == true)
             {
                 // Open document 
-                string filename = dlg.FileName;
+                filename = dlg.FileName;
                 textBox1.Text = filename;
             }
         }
 
         private void sendBT_Click(object sender, RoutedEventArgs e)
         {
-
+            string path = @"C:\Users\Eliott\source\repos\jaber-project\DNAFile.txt";
+            /*
+            using (StreamWriter outputFile = new StreamWriter(path))
+            {
+                foreach (string line in lines)
+                    outputFile.WriteLine(line);
+            }
+            */
+            File.Copy(filename, path, true);
         }
     }
 }
