@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
+=======
+﻿using Nodes;
+using System;
+using System.Collections.Generic;
+using System.Text;
+>>>>>>> 644dd057bacdd5e6f6f081b87f11a5858912aef7
 
 namespace Orchestrator
 {
@@ -7,6 +14,8 @@ namespace Orchestrator
     {
         private TaskManager manager;
         private IConnexionOrchestrateur connexion;
+        private String dna;
+        private List<String> dnaFragments; //store dna splitted in case of loss of connexion
 
         public Maestro(int type)
         {
@@ -34,6 +43,7 @@ namespace Orchestrator
             manager.TaskRecevoir();
         }
 
+<<<<<<< HEAD
         //Prends un fichier local qui se fait spliter
         public void Split()
         {
@@ -98,3 +108,41 @@ namespace Orchestrator
         }
     }
 }
+=======
+        public void MapNode(List<Node> nodes)
+        {
+            
+        }
+
+        private List<List<String>> CreateDnaFragChunk(List<Node> nodes)
+        {
+            List<List<String>> dnaFragmentsChunkedList = new List<List<String>>();
+
+            if (dnaFragments.Count != 0)
+            {
+                int numberOfDnaLinePerNode = dnaFragments.Count / nodes.Count;
+
+                for (int index = 0; index < nodes.Count; index++)
+                {
+                    dnaFragmentsChunkedList.Add(dnaFragments.GetRange(index * numberOfDnaLinePerNode, numberOfDnaLinePerNode));
+                }
+            } else
+            {
+                throw new Exception("Unsupported operation exception");
+            }
+
+            /*       List<String> listResult = new List<string>();
+                   foreach(List<String> subList in dnaFragmentsChunkedList)
+                   {
+                       String firstResult = "";
+                       foreach(String item in subList)
+                       {
+                           firstResult = firstResult + item;
+                       }
+                       listResult.Add(firstResult);*/
+            return dnaFragmentsChunkedList;
+            }
+        }
+
+    }
+>>>>>>> 644dd057bacdd5e6f6f081b87f11a5858912aef7

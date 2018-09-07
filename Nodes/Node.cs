@@ -1,4 +1,10 @@
 ﻿using System;
+using Shared;
+using System.Collections.Generic;
+
+/// <Bouchon>
+
+/// </Bouchon>
 namespace Nodes
 {
     public class Node
@@ -7,7 +13,33 @@ namespace Nodes
 
         public Node()
         {
-            connexion = new ConnexionNode();
+            //BOOOUUUCHOOOONNNN
+            //connexion = new ConnexionNode();
+            Parser parser = new Parser();
+            Dictionary<string, int> dResult = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
+            Console.WriteLine("dict1");
+            foreach (KeyValuePair < string, int> kvp in dResult)
+            {
+                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            }
+            //BOOOUUUCHOOOONNNN 2
+            Dictionary<string, int> dResult2 = parser.Parse("rodecfhqusyedvbcfnzrodecfhqusyedvbcfnzer");
+            Dictionary<string, int> dResult3 = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
+            Dictionary<string, int> dResult4 = parser.Parse("befqfnzervqufdiqnsrodecfhqusyedvbcfnzer");
+            Reducer reducer = new Reducer();
+            reducer.AddDictToReduce(dResult);
+            reducer.AddDictToReduce(dResult2);
+            reducer.AddDictToReduce(dResult3);
+            reducer.AddDictToReduce(dResult4);
+            Dictionary<string, int> finalDict = reducer.Reduce();
+            Console.WriteLine("reduce");
+            foreach (KeyValuePair<string, int> kvp in finalDict)
+            {
+                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            }
+
         }
 
         public void Connecter()
