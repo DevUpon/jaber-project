@@ -1,15 +1,26 @@
 ﻿using System;
+<<<<<<< HEAD
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+=======
 using Shared;
 using System.Collections.Generic;
+>>>>>>> 8450a98b6824e525db4a95bfd156b8b6d1e5ff33
 
-/// <Bouchon>
-
+<<<<<<< HEAD
 /// </Bouchon>
+=======
+>>>>>>> 20aab16b997015dcb7d3efbd366aa089cf3519f1
 namespace Nodes
 {
     public class Node
     {
+        private List<String> dnaFragment;
         private IConnexionNode connexion;
+        private IReduce reduce;
 
         public Node()
         {
@@ -55,6 +66,18 @@ namespace Nodes
         public String Recevoir()
         {
             return connexion.Recevoir();
+        }
+
+        public void setDnaFragment(List<String> dnaFragment)
+        {
+            if (dnaFragment.Count != 0)
+            {
+                this.dnaFragment = dnaFragment;
+
+            } else
+            {
+                throw new Exception("Unsupported operation, list is empty");
+            }
         }
     }
 }

@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 ﻿using Nodes;
+=======
+﻿using Nodes;
+using System;
+using System.Collections.Generic;
+>>>>>>> 1c38a83d193af3e316d3e6b698f38dfea4f44db3
 
 namespace Orchestrator
 {
@@ -37,6 +43,7 @@ namespace Orchestrator
             manager.TaskRecevoir();
         }
 
+<<<<<<< HEAD
         //Prends un fichier local qui se fait spliter
         public List<String> Split(String pathFile)
         {
@@ -98,6 +105,8 @@ namespace Orchestrator
             return mylist;
         }
 
+=======
+>>>>>>> 1c38a83d193af3e316d3e6b698f38dfea4f44db3
         public void MapNode(List<Node> nodes)
         {
             
