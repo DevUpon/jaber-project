@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Interface"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
         <Button x:Name="sendBT" Content="Send" HorizontalAlignment="Left" Height="56" Margin="66,55,0,0" VerticalAlignment="Top" Width="146" Click="sendBT_Click" FontSize="18"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="37" Margin="406,55,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="366" FontSize="18"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="37" Margin="406,55,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="366"/>
         <Button x:Name="BrowseBT" Content="Browse" HorizontalAlignment="Left" Height="56" Margin="234,55,0,0" VerticalAlignment="Top" Width="147" Click="BrowseBT_Click" FontSize="18"/>
-        <TextBlock x:Name="resultBolck" HorizontalAlignment="Left" Height="153" Margin="66,208,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="661" FontSize="14"/>
-        <Label Content="Resultat :" HorizontalAlignment="Left" Height="29" Margin="66,179,0,0" VerticalAlignment="Top" Width="85" FontSize="16"/>
+        <TextBlock x:Name="resultBolck" HorizontalAlignment="Left" Height="153" Margin="66,208,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="661" FontSize="14" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+        <Label Content="Resultat :" HorizontalAlignment="Left" Height="29" Margin="66,179,0,0" VerticalAlignment="Top" Width="85" FontSize="16" FontWeight="Bold" Foreground="White"/>
 
     </Grid>
 </Window>

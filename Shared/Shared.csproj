@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferObjet.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Reducer.cs" />
   </ItemGroup>
