@@ -2,14 +2,13 @@
 using Shared;
 using System.Collections.Generic;
 
-/// <Bouchon>
-
 /// </Bouchon>
 namespace Nodes
 {
     public class Node
     {
         private IConnexionNode connexion;
+        private IReduce reduce;
 
         public Node()
         {
