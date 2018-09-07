@@ -1,9 +1,6 @@
 ﻿using System;
-using System;
+using Shared;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /// <Bouchon>
 
@@ -31,10 +28,10 @@ namespace Nodes
             Dictionary<string, int> dResult3 = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
             Dictionary<string, int> dResult4 = parser.Parse("befqfnzervqufdiqnsrodecfhqusyedvbcfnzer");
             Reducer reducer = new Reducer();
-            reducer.addDictToReduce(dResult);
-            reducer.addDictToReduce(dResult2);
-            reducer.addDictToReduce(dResult3);
-            reducer.addDictToReduce(dResult4);
+            reducer.AddDictToReduce(dResult);
+            reducer.AddDictToReduce(dResult2);
+            reducer.AddDictToReduce(dResult3);
+            reducer.AddDictToReduce(dResult4);
             Dictionary<string, int> finalDict = reducer.Reduce();
             Console.WriteLine("reduce");
             foreach (KeyValuePair<string, int> kvp in finalDict)

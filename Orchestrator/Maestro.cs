@@ -1,6 +1,7 @@
 ﻿using Nodes;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Orchestrator
 {
@@ -42,9 +43,10 @@ namespace Orchestrator
             
         }
 
-        public List<List<String>> CreateDnaFragChunk(List<Node> nodes)
+        private List<List<String>> CreateDnaFragChunk(List<Node> nodes)
         {
             List<List<String>> dnaFragmentsChunkedList = new List<List<String>>();
+
             if (dnaFragments.Count != 0)
             {
                 int numberOfDnaLinePerNode = dnaFragments.Count / nodes.Count;
@@ -57,8 +59,18 @@ namespace Orchestrator
             {
                 throw new Exception("Unsupported operation exception");
             }
-            
+
+            /*       List<String> listResult = new List<string>();
+                   foreach(List<String> subList in dnaFragmentsChunkedList)
+                   {
+                       String firstResult = "";
+                       foreach(String item in subList)
+                       {
+                           firstResult = firstResult + item;
+                       }
+                       listResult.Add(firstResult);*/
             return dnaFragmentsChunkedList;
+            }
         }
-    }
+
     }
