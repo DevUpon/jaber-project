@@ -9,6 +9,7 @@ namespace Shared
         public Reducer()
         {
         }
+
         public Dictionary<string, int> Reduce()
         {
             Dictionary<string, int> finalDict = new Dictionary<string, int>();
@@ -35,6 +36,23 @@ namespace Shared
         public void AddDictToReduce(Dictionary<string, int> dict)
         {
             lToReduce.Add(dict);
+        }
+
+        public Dictionary<string, int> stringToDict(string data) {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            string[] keys = data.Split(',');
+            foreach (string keyValue in keys)
+            {
+                string key = keyValue.Split(':')[0];
+                if (result.ContainsKey(key))
+                {
+                    result[key] += Int32.Parse(keyValue.Split(':')[1]);
+                } else
+                {
+                    result.Add(key, Int32.Parse(keyValue.Split(':')[1]));
+                }
+            }
+            return result;
         }
     }
 }

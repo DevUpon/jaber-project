@@ -12,7 +12,9 @@ namespace Orchestrator
             orch.Connecter(2);
             orch.WaitCompletedConnexion();
             orch.Envoyer(dnaList);
-            orch.Recevoir();
+            string result = orch.Recevoir();
+            Dictionary<string, int> reducing = orch.ReduceString(result);
+            Console.WriteLine(reducing);
         }
     }
 }

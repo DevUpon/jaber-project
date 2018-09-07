@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-﻿using Nodes;
+using Shared;
 
 namespace Orchestrator
 {
@@ -32,9 +32,9 @@ namespace Orchestrator
             manager.Wait();
         }
 
-        public void Recevoir()
+        public string Recevoir()
         {
-            manager.TaskRecevoir();
+            return manager.TaskRecevoir();
         }
 
         //Prends un fichier local qui se fait spliter
@@ -95,12 +95,7 @@ namespace Orchestrator
             System.IO.File.WriteAllLines(path, mylist);
             //String beu = mylist.ToString();
             //System.IO.File.WriteAllText(path2, allstring);
-            return mylist;
-        }
-
-        public void MapNode(List<Node> nodes)
-        {
-            
+            return mylist.GetRange(0, 1000);
         }
 
         public List<List<String>> CreateDnaFragChunk(String pathFile, int countNodes)
@@ -132,6 +127,12 @@ namespace Orchestrator
                        listResult.Add(firstResult);*/
             return dnaFragmentsChunkedList;
             }
+
+        public Dictionary<string, int> ReduceString(string data)
+        {
+            Reducer reduce = new Reducer();
+            return reduce.stringToDict(data);
         }
+    }
 
     }

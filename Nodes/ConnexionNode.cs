@@ -56,6 +56,8 @@ namespace Nodes
             IPAddress ipServer;
             if (IPAddress.TryParse("127.0.0.1", out ipServer))
             {
+                socketNoeud.ReceiveTimeout = -1;
+                socketNoeud.SendTimeout = -1;
                 socketNoeud.Connect(new IPEndPoint(ipServer.MapToIPv4(), 50000));
                 return true;
             }
@@ -98,8 +100,10 @@ namespace Nodes
             {
                 int bytesRec = socketNoeud.Receive(etatConnexion.buffer);
                 data = (String) Encoding.ASCII.GetString(etatConnexion.buffer, 0, bytesRec);
-                if (data.Equals(String.Empty))
+                if (data.Contains("\n"))
                 {
+                    data += data;
+                    data = data.Replace('\n', ' ').Trim();
                     break;
                 }
                 else
@@ -108,7 +112,7 @@ namespace Nodes
                 }
             }
             Console.WriteLine(etatConnexion.buffer);
-            return etatConnexion.chaineBuffer;
+            return data;
         }
 
         public Boolean Envoyer(String donnees)

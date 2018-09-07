@@ -15,20 +15,17 @@ namespace Nodes
 
             //List<Char> lBase = sFragDNA.Split().ToList();
             //Count Paire
-            for(int i = 0; i < sFragDNA.Count()-1; i++)
+            for(int i = 0; i < sFragDNA.Count()-1; i += 2)
             {
-                if (i % 2 == 0)
+                String paireBase = sFragDNA[i].ToString() + sFragDNA[i + 1].ToString();
+                if (dResult.ContainsKey(paireBase))
                 {
-                    String paireBase = sFragDNA[i].ToString() + sFragDNA[i + 1].ToString();
-                    if (dResult.ContainsKey(paireBase))
-                    {
-                        int nbpaireBase = dResult[paireBase];
-                        dResult[paireBase] = nbpaireBase + 1;
-                    }
-                    else
-                    {
-                        dResult.Add(paireBase, 1);
-                    }
+                    int nbpaireBase = dResult[paireBase];
+                    dResult[paireBase] = nbpaireBase + 1;
+                }
+                else
+                {
+                    dResult.Add(paireBase, 1);
                 }
                 
             }

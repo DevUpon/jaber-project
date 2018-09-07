@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Shared;
+using System.Threading.Tasks;
 
 
 
@@ -12,21 +13,27 @@ namespace Nodes
     {
         private List<String> dnaFragment;
         private IConnexionNode connexion;
+        private Parser parser;
+        private Reducer reducer;
+        private Dictionary<string, int> result1;
+        private Dictionary<string, int> result2;
+
 
         public Node()
         {
             //BOOOUUUCHOOOONNNN
             connexion = new ConnexionNode();
-            Parser parser = new Parser();
-            Dictionary<string, int> dResult = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
-            Console.WriteLine("dict1");
-            foreach (KeyValuePair < string, int> kvp in dResult)
+            parser = new Parser();
+            reducer = new Reducer();
+            // Dictionary<string, int> dResult = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
+            // Console.WriteLine("dict1");
+            /*foreach (KeyValuePair < string, int> kvp in dResult)
             {
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-            }
+            } */
             //BOOOUUUCHOOOONNNN 2
-            Dictionary<string, int> dResult2 = parser.Parse("rodecfhqusyedvbcfnzrodecfhqusyedvbcfnzer");
+            /*Dictionary<string, int> dResult2 = parser.Parse("rodecfhqusyedvbcfnzrodecfhqusyedvbcfnzer");
             Dictionary<string, int> dResult3 = parser.Parse("befqbesevqufdiqnsrodecfhqusyedvbcfnzer");
             Dictionary<string, int> dResult4 = parser.Parse("befqfnzervqufdiqnsrodecfhqusyedvbcfnzer");
             Reducer reducer = new Reducer();
@@ -40,9 +47,34 @@ namespace Nodes
             {
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-            }
+            }*/
 
         }
+
+        public Dictionary<string, int> Reduce(String data)
+        {
+            // Dictionary<string, int> parsing = parser.Parse(data);
+            Task<Dictionary<string, int>> threadParse1 = Task.Run(() => parser.Parse(data.Substring(0, data.Length / 2)));
+            Task<Dictionary<string, int>> threadParse2 = Task.Run(() => parser.Parse(data.Substring(data.Length / 2)));
+            result1 = threadParse1.Result;
+            result2 = threadParse2.Result;
+            reducer.AddDictToReduce(result1);
+            reducer.AddDictToReduce(result2);
+            return reducer.Reduce();
+        }
+
+        public String GetStringReduce(Dictionary<string, int> data)
+        {
+            string result = String.Empty;
+            foreach (string key in data.Keys)
+            {
+                result += key.Trim() + ":" + data[key].ToString() + ",";
+            }
+            return result.Substring(0, result.Length - 1) + "\n";
+        }
+
+
+
 
         public void Connecter()
         {

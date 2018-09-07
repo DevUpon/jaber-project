@@ -56,6 +56,8 @@ namespace Orchestrator
             IPAddress ipServer;
             if (IPAddress.TryParse("127.0.0.1", out ipServer))
             {
+                socketOrchestrateur.ReceiveTimeout = -1;
+                socketOrchestrateur.SendTimeout = -1;
                 socketOrchestrateur.Bind(new IPEndPoint(ipServer.MapToIPv4(), 50000));
                 socketOrchestrateur.Listen(countNode);
                 while (listeConnexions.Count < countNode)
@@ -100,40 +102,37 @@ namespace Orchestrator
             foreach (Socket connexion in listeConnexions)
             {
                 var dataNode = String.Join("", data[index].ToArray());
+                dataNode += '\n';
                 byte[] byteData = Encoding.ASCII.GetBytes(dataNode);
                 connexion.Send(byteData);
+                index++;
             }
             return true;
         }
 
-        public void EnvoiCallBack(IAsyncResult resultat)
-        {
-            int bytesSent = socketOrchestrateur.EndSend(resultat);
-            Console.WriteLine("Sent {0} bytes to server.", bytesSent);
-        }
-
-        public String Recevoir(Socket handler)
+        public string Recevoir(Socket handler)
         {
             Console.WriteLine("travail");
 
             BufferObjet etatConnexion = new BufferObjet();
-            etatConnexion.socketConnexion = socketOrchestrateur;
-            String data = null;
+            String result = null;
             while (true)
             {
+                handler.ToString();
                 int bytesRec = handler.Receive(etatConnexion.buffer);
-                data = (String)Encoding.ASCII.GetString(etatConnexion.buffer, 0, bytesRec);
-                if (data.Equals(String.Empty))
+                string data = (String)Encoding.ASCII.GetString(etatConnexion.buffer, 0, bytesRec);
+                if (data.Contains("\n"))
                 {
+                    result += data;
+                    result = result.Replace('\n', ' ').Trim();
                     break;
                 }
                 else
                 {
-                    etatConnexion.chaineBuffer += data;
+                    result += data;
                 }
             }
-            Console.WriteLine(etatConnexion.chaineBuffer);
-            return etatConnexion.chaineBuffer;
+            return result;
         }
 
         public Socket GetSocket()
