@@ -1,17 +1,15 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
-/// <Bouchon>
-
-/// </Bouchon>
 namespace Nodes
 {
     public class Node
     {
+        private List<String> dnaFragment;
         private IConnexionNode connexion;
 
         public Node()
@@ -58,6 +56,18 @@ namespace Nodes
         public void Recevoir()
         {
             connexion.Recevoir();
+        }
+
+        public void setDnaFragment(List<String> dnaFragment)
+        {
+            if (dnaFragment.Count != 0)
+            {
+                this.dnaFragment = dnaFragment;
+
+            } else
+            {
+                throw new Exception("Unsupported operation, list is empty");
+            }
         }
     }
 }
