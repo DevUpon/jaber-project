@@ -1,14 +1,6 @@
 ﻿using System;
-<<<<<<< HEAD
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-=======
 using Shared;
-using System.Collections.Generic;
->>>>>>> 8450a98b6824e525db4a95bfd156b8b6d1e5ff33
 
 namespace Nodes
 {
